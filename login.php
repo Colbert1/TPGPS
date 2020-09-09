@@ -18,10 +18,9 @@
         <!--Formulaire de connexion-->
         <form action="verification.php" method="POST">
             <h1>Identification</h1>
-            
+
             <p>Nom d'utilisateur :</p>
             <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>    
-            
             <p>Mot de passe :</p>
             <input type="text" placeholder="Entrer le mot de passe" name="password" required>
             <input type="submit" id="submit" value='LOGIN'>
