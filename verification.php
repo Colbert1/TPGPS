@@ -1,5 +1,7 @@
 <?php
 session_start();
+include("classUser.php");
+
 if(isset($_POST['username']) && isset($_POST['password']))
 {
     // connexion à la base de données
@@ -8,16 +10,18 @@ if(isset($_POST['username']) && isset($_POST['password']))
     $db_name     = '';
     $db_host     = 'localhost';
 
-    try {
+    /*try {
         $conn = new PDO("mysql:host=$db_name;dbname=", $db_username, $db_password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "Connected successfully";
     }catch(PDOException $e){
         echo "Connection failed" . $e->GetMessage();
-    }
+    }*/
     
     $username = $_POST['username']; 
     $password = $_POST['password'];
+
+    
     
     if($username !== "" && $password !== "")
     {
