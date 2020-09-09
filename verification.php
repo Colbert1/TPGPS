@@ -10,6 +10,8 @@ if(isset($_POST['username']) && isset($_POST['password']))
     $db_name     = '';
     $db_host     = 'localhost';
 
+    $conn = new user($_POST["username"],$_POST["password"]);
+    $conn = connectBDD($db_host,$db_name,$db_username,$db_password);
     /*try {
         $conn = new PDO("mysql:host=$db_name;dbname=", $db_username, $db_password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

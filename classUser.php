@@ -9,14 +9,22 @@ avec $serveur : adresse ip du serveur de BDD Lowrance
 
 class user{
         //Variables
+        private $_user;
+        private $_password;
         private $_dbname;
         private $_dbusername;
         private $_dbpasswd;
         private $_dbhost;
 
         /* Fonctions
-       
+        
         Connexion BDD */
+        public function __construct($user,$password)
+        {
+                $this->_user = $user;
+                $this->_password = $password;
+        }
+        
         public function connectBDD($dbhost,$dbname,$dbusername,$dbpasswrd){
                 try {
                 $conn = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpasswrd);
