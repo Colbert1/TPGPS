@@ -18,8 +18,7 @@ class user{
         Connexion BDD */
         public function __construct($bdd)
         {
-                $this->_user = $username;
-                $this->_password = $password;
+                
         }
 
         public function connectBDD($db_host,$db_name,$db_username,$db_passwrd){
