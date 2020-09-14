@@ -3,8 +3,8 @@
 
 class user{
         //Variables
-        public $_user;
-        public $_password;
+        public $_userComparaison;
+        public $_passwordComparaison;
         private $_bdd;
 
         /* Fonctions
@@ -27,7 +27,7 @@ class user{
 
         }
 
-        public function verifConnexion($username,$password){
+        public function Autorisation($username,$password){
         
                 if($username !== "" && $password !== ""){
                 $sql = $this->_bdd->prepare("SELECT count(*) FROM `user` WHERE `user`.`login` = `$username` AND `user`.`password` = `$password` ");
@@ -37,30 +37,24 @@ class user{
 
                         if($count!=0){ // nom d'utilisateur et mot de passe correctes
                                 $_SESSION['username'] = $username;
+                                return TRUE;
                         }else{
                         echo "<a href='Accueil.php'>continuer</a>";     // nom d'utilisateur et mot de passe incorrectes
+                                return FALSE;
                         }
                 }else{
                         echo "<a href='index.php'>Echec de connexion, continuer</a>";     // utilisateur ou mot de passe vide
+                                return FALSE;
                 }
         }
 
-
-
+        public function Modification_user($username,$password){
+                $this->_userComparaison = $username;
+                $this->_passwordComparaison = $password;
+        }
 } 
-
-
-
- /* 
-Function Autorisation ($login,$passwd)
-	avec  $login : utilisateur ayant autorisation d'accès au site web 
-                     $passwd : mot de passe associé à $login
-                  
-        valeur de retour : true si $login et $passwd correspondent à une personne  
-        autorisée dans la table user sinon false.*/
-
-
-/* 
+        
+/*
 Function Modification_user ($login,$passwd)
 	avec  $login : utilisateur devant être modifié
                      $passwd : mot de passe associé à $login non crypté
