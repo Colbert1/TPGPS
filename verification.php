@@ -10,7 +10,7 @@ if(isset($_POST['username']) && isset($_POST['password']))
     $db_name     = 'projet_GPS';
     $db_host     = '192.168.64.204';
 
-$pdo = new user();
+$pdo = new user($_POST['username'],$_POST['password']);
     $conn = $pdo->connectBDD($db_host,$db_name,$db_username,$db_password);
     
     $username = $_POST['username']; 

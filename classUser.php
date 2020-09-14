@@ -9,28 +9,34 @@ avec $serveur : adresse ip du serveur de BDD Lowrance
 
 class user{
         //Variables
-        private $_user;
-        private $_password;
+        public $_user;
+        public $_password;
+        private $_bdd;
 
         /* Fonctions
         
         Connexion BDD */
-        
-        public function connectBDD($dbhost,$dbname,$dbusername,$dbpasswrd){
+        public function __construct($bdd)
+        {
+                $this->_user = $username;
+                $this->_password = $password;
+        }
+
+        public function connectBDD($db_host,$db_name,$db_username,$db_passwrd){
                 try {
-                $conn = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpasswrd);
-                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $conn = new PDO("mysql:host=$db_host;dbname=$db_name", $db_username, $db_passwrd);      
                         echo "Connected successfully";
                 }catch(PDOException $e){
                         echo "Connection failed" . $e->GetMessage();
                 }
-                return $conn; 
+                $this->_bdd = $conn; 
         }
 
         public function verifConnexion($username,$password,$conn){
         
                 if($username !== "" && $password !== ""){
-                $sql = $conn->query("SELECT count(*) FROM `user` WHERE `user`.`login` = `$username` AND `user`.`password` = `$password` ");
+                $sql = $this->_bdd->prepare("SELECT count(*) FROM `user` WHERE `user`.`login` = `$username` AND `user`.`password` = `$password` ");
+                $sql->execute();
                 $reponse = $sql->fetch();
                 $count = $reponse['count(*)'];
 
