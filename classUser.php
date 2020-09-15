@@ -45,18 +45,22 @@ class user
                         return FALSE;
                 }
         }
-
+        //Compteur d'utilisateurs
+        public function compteurUsers()
+        {
+                $sql = $this->_bdd->prepare("SELECT COUNT(*) `login` FROM `user`");
+                $sql->execute();
+                $compteur = $sql->fetch();
+                
+                return $compteur;
+        }
         //Sélection de tous les utilisateurs
         public function selecUsers()
         {
-                $sql = $this->_bdd->prepare("SELECT `login` FROM `user`");
-                $sql->execute();
-
-                
                 $tabUser = array();
-                $req = "SELECT chiffres FROM `table`";
-                foreach  ($db->query($req) as $row) {
-                        $tabUser = $row['chiffres'];
+                $req = "SELECT `login` FROM `user`";
+                foreach ($this->_bdd->query($req) as $row) {
+                        $tabUser[] = $row['login'];
                 }
 
                 return $tabUser;

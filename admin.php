@@ -21,23 +21,26 @@ Cette page ne sera accessible que si l’utilisateur est un administrateur authe
     <form action="admin.php" method="POST">
     <button type="submit" class="btn btn-primary btn-lg btn-block" name="modif">Modification</button>
   
-    <!-- SELECT login FROM user -->
     <!-- SELECT * FROM user where le user selectionné et tu l'affiches dans le formulaire-->
     <button type="submit" class="btn btn-secondary btn-lg btn-block" name="delete">Suppression</button>
     <?php 
         $pdo = new user($conn);
-        echo $_SESSION['username'];
+        
         if(isset($_POST['modif'])){
+            $compteurUser = $pdo->compteurUsers();  
             $selecUser = $pdo->selecUsers();
-            echo $selecUser[0];            
+            for($i = 0; $i < $compteurUser; $i++){
+                echo $selecUser[$i];
+            }
+                        
         }else{
             echo "Aucune manipulation effectuee";
         }
         $retour  = $pdo->modificationUser($_SESSION['username'],$_SESSION['password'],$usermodif,$passwordmodif);
        
+
         //$retour2 = $pdo->deleteUser($id_user);
     ?>
-    <!-- SELECT login FROM user -->
     <!-- DELETE FROM `user` where -> user selectionné-->
     </form>
 </div>

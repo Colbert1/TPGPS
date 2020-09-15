@@ -3,15 +3,19 @@
 <html lang="fr">
 <head>
   <link rel="stylesheet" href="styleMenu.css">
+  <?php include("classUser.php"); ?>
 </head>
 <body>
 <!-- Ajouter le profile utilisateur pour pouvoir modifier son mot de passe -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="card">
-  <h1></h1>
-  <p class="title"></p>
-  <p></p>
+  <h1>Profile :</h1>
+  <p><?php echo $username ?></p>
+  <p><?php echo $name ?></p>
+  <p><?php echo $surname ?></p>
+  <p><?php echo $mail ?></p>
+  <p><?php echo $password ?></p>
 </div>
 
   <input type="checkbox" id="myInput">
