@@ -1,1 +1,1 @@
-<!-- acceder a la position du/des bateaux -->
+<!-- acceder a la position du/des bateaux test-->

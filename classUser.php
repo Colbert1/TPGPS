@@ -51,6 +51,20 @@ class user{
         public function Modification_user($username,$password){
                 $this->_userComparaison = $username;
                 $this->_passwordComparaison = $password;
+
+                $sql = $this->_bdd->prepare();
+                $sql->execute();
+
+                //Comparaison entre les mdp et user de départ
+                if(){
+
+                }
+
+                if($modif == 1){
+                        return TRUE;
+                }else{
+                        return FALSE;
+                }
         }
 } 
         
