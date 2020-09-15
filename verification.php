@@ -16,8 +16,10 @@ if(isset($_POST['username']) && isset($_POST['password']))
     $username = $_POST['username']; 
     $password = $_POST['password'];
 
+    $pdo->verifConnexion($username,$password);
 }else{
    header('Location: login.php');
 }
+
 session_destroy(); // fermer la connexion
 ?>

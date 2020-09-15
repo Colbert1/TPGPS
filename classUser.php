@@ -52,6 +52,7 @@ class user{
                 }else{
                     header('refresh: 1'); // utilisateur ou mot de passe vide
                 }
+        }
 
 
 
