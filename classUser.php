@@ -36,6 +36,28 @@ class user{
 
         }
 
+        public function verifConnexion($username,$password){
+        
+                if($username !== "" && $password !== ""){
+            $sql = $conn->query("SELECT count(*) FROM user where us_user = '".$username."' and us_password = '".$password."' ");
+            $reponse = $sql->fetch();
+            $count = $reponse['count(*)'];
+            if($count!=0) // nom d'utilisateur et mot de passe correctes
+            {
+               $_SESSION['username'] = $username;
+               header('Location: principale.php');
+            }
+            else
+            {
+               header('refresh: 1'); // utilisateur ou mot de passe incorrect
+            }
+        }
+        else
+        {
+           header('refresh: 1'); // utilisateur ou mot de passe vide
+        }
+
+        }
 
 } 
 
