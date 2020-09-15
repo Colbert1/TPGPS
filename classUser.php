@@ -7,14 +7,34 @@ avec $serveur : adresse ip du serveur de BDD Lowrance
  valeur de retour : true si la connexion est OK et un message d'erreur explicite
  sinon.*/
 
+class user{
+        //Variables
+        private $_dbname;
+        private $_dbusername;
+        private $_dbpasswd;
+        private $_dbhost;
+
+        /* Fonctions
+       
+        Connexion BDD */
+        public function connectBDD($dbhost,$dbname,$dbusername,$dbpasswrd){
+                try {
+                $conn = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpasswrd);
+                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        echo "Connected successfully";
+                }catch(PDOException $e){
+                        echo "Connection failed" . $e->GetMessage();
+                } 
+
+        }
+
+
+} 
+
 
 
  /* 
 Function Autorisation ($login,$passwd)
-<<<<<<< HEAD
-
-=======
->>>>>>> 8e77ccad8c81a7c0fed3db8c1d71a338ca469003
 	avec  $login : utilisateur ayant autorisation d'accès au site web 
                      $passwd : mot de passe associé à $login
                   
@@ -24,10 +44,6 @@ Function Autorisation ($login,$passwd)
 
 /* 
 Function Modification_user ($login,$passwd)
-<<<<<<< HEAD
-
-=======
->>>>>>> 8e77ccad8c81a7c0fed3db8c1d71a338ca469003
 	avec  $login : utilisateur devant être modifié
                      $passwd : mot de passe associé à $login non crypté
                   
@@ -36,10 +52,6 @@ Function Modification_user ($login,$passwd)
 
 /* 
 Function Suppression_user ($login,$passwd)
-<<<<<<< HEAD
-
-=======
->>>>>>> 8e77ccad8c81a7c0fed3db8c1d71a338ca469003
 	avec  $login : utilisateur devant être effacé 
                      $passwd : mot de passe associé à $login non crypté
                   
