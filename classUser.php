@@ -32,32 +32,28 @@ class user{
                         echo "Connected successfully";
                 }catch(PDOException $e){
                         echo "Connection failed" . $e->GetMessage();
-                } 
-
+                }
+                return $conn; 
         }
 
         public function verifConnexion($username,$password){
         
                 if($username !== "" && $password !== ""){
-            $sql = $conn->query("SELECT count(*) FROM user where us_user = '".$username."' and us_password = '".$password."' ");
-            $reponse = $sql->fetch();
-            $count = $reponse['count(*)'];
-            if($count!=0) // nom d'utilisateur et mot de passe correctes
-            {
-               $_SESSION['username'] = $username;
-               header('Location: principale.php');
-            }
-            else
-            {
-               header('refresh: 1'); // utilisateur ou mot de passe incorrect
-            }
-        }
-        else
-        {
-           header('refresh: 1'); // utilisateur ou mot de passe vide
-        }
+                $sql = $conn->query("SELECT count(*) FROM user where us_user = '".$username."' and us_password = '".$password."' ");
+                $reponse = $sql->fetch();
+                $count = $reponse['count(*)'];
 
-        }
+                        if($count!=0){ // nom d'utilisateur et mot de passe correctes
+                                $_SESSION['username'] = $username;
+                                header('Location: principale.php');
+                        }else{
+                                header('refresh: 1'); // utilisateur ou mot de passe incorrect
+                        }
+                }else{
+                    header('refresh: 1'); // utilisateur ou mot de passe vide
+                }
+
+
 
 } 
 
@@ -87,3 +83,4 @@ Function Suppression_user ($login,$passwd)
                   
            valeur de retour : true si la suppression est un succès et sinon false. 
 */
+?>
