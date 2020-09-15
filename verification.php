@@ -20,8 +20,7 @@ if(isset($_POST['username']) && isset($_POST['password']))
     
     if($username !== "" && $password !== "")
     {
-        $requete = "SELECT count(*) FROM user where 
-              us_user = '".$username."' and us_password = '".$password."' ";
+        $sql = $conn->query("SELECT count(*) FROM user where us_user = '".$username."' and us_password = '".$password."' ");
         $exec_requete = query($conn,$requete);
         $reponse      = fetch($exec_requete);
         $count = $reponse['count(*)'];
