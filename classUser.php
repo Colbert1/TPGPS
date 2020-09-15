@@ -11,19 +11,10 @@ class user{
         //Variables
         private $_user;
         private $_password;
-        private $_dbname;
-        private $_dbusername;
-        private $_dbpasswd;
-        private $_dbhost;
 
         /* Fonctions
         
         Connexion BDD */
-        public function __construct($user,$password)
-        {
-                $this->_user = $user;
-                $this->_password = $password;
-        }
         
         public function connectBDD($dbhost,$dbname,$dbusername,$dbpasswrd){
                 try {
@@ -36,18 +27,26 @@ class user{
                 return $conn; 
         }
 
-        public function verifConnexion($username,$password){
+        public function verifConnexion($username,$password,$conn){
         
                 if($username !== "" && $password !== ""){
-                $sql = $conn->query("SELECT count(*) FROM user where us_user = '".$username."' and us_password = '".$password."' ");
+                $sql = $conn->query("SELECT count(*) FROM `user` WHERE `user`.`login` = `$username` AND `user`.`password` = `$password` ");
                 $reponse = $sql->fetch();
                 $count = $reponse['count(*)'];
 
                         if($count!=0){ // nom d'utilisateur et mot de passe correctes
                                 $_SESSION['username'] = $username;
-                                header('Location: principale.php');
                         }else{
-                                header('refresh: 1'); // utilisateur ou mot de passe incorrect
+                        echo "<!--Formulaire de connexion-->
+                        <form action='verification.php' method='POST'>
+                        <h1>Identification</h1>
+
+                                <p>Nom d'utilisateur :</p>
+                                        <input type='text' placeholder='Entrer le nom d'utilisateur' name='username' required>    
+                                <p>Mot de passe :</p>
+                                        <input type='text' placeholder='Entrer le mot de passe' name='password' required>
+                                        <input type='submit' id='submit' value='LOGIN'>
+                        </form>"; // utilisateur ou mot de passe incorrect
                         }
                 }else{
                     header('refresh: 1'); // utilisateur ou mot de passe vide
