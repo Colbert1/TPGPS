@@ -15,8 +15,9 @@ Cette page ne sera accessible que si l’utilisateur est un administrateur authe
         <img src="favicon.png" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy"> Espace Administration</span>
 </nav>
 <div class="container">
-    <button type="button" class="btn btn-primary btn-lg btn-block">Primary</button>
-    <button type="button" class="btn btn-secondary btn-lg btn-block">Secondary</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block">Modification</button>
+    <button type="button" class="btn btn-secondary btn-lg btn-block">Suppression</button>
+    
 </div>
 <?php
 /* 
