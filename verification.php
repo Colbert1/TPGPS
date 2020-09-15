@@ -12,13 +12,6 @@ if(isset($_POST['username']) && isset($_POST['password']))
 
     $conn = new user($_POST["username"],$_POST["password"]);
     $conn = connectBDD($db_host,$db_name,$db_username,$db_password);
-    /*try {
-        $conn = new PDO("mysql:host=$db_name;dbname=", $db_username, $db_password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected successfully";
-    }catch(PDOException $e){
-        echo "Connection failed" . $e->GetMessage();
-    }*/
     
     $username = $_POST['username']; 
     $password = $_POST['password'];
@@ -29,8 +22,8 @@ if(isset($_POST['username']) && isset($_POST['password']))
     {
         $requete = "SELECT count(*) FROM user where 
               us_user = '".$username."' and us_password = '".$password."' ";
-        $exec_requete = mysqli_query($conn,$requete);
-        $reponse      = mysqli_fetch_array($exec_requete);
+        $exec_requete = query($conn,$requete);
+        $reponse      = fetch($exec_requete);
         $count = $reponse['count(*)'];
         if($count!=0) // nom d'utilisateur et mot de passe correctes
         {
