@@ -17,8 +17,7 @@ $pdo = new user($conn);
     $password = $_POST['password'];
 
     $autorisation = $pdo->Autorisation($username,$password);
-    echo $autorisation;
-}else{
+    }else{
    header('Location: login.php');
 }
 

@@ -16,7 +16,7 @@
     <!--Corps-->
     <div id="container">
         <!--Formulaire de connexion-->
-        <form action="verification.php" method="POST">
+        <form action="InscriptionInput.php" method="POST">
             <h1>Inscription</h1>
 
             <p>Nom d'utilisateur :</p>
