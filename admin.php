@@ -5,7 +5,8 @@ un pour modification ou suppression.
 Cette page ne sera accessible que si l’utilisateur est un administrateur authentifié.
 -->
 <?php 
-    include "classUser.php";
+    include("bdd.php");
+    include("classUser.php");
 ?>
 <head>
 <link rel="stylesheet" href="styleAdmin.css">    
@@ -17,11 +18,28 @@ Cette page ne sera accessible que si l’utilisateur est un administrateur authe
         <img src="favicon.png" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy"> Espace Administration</span>
 </nav>
 <div class="container">
-    <button type="button" class="btn btn-primary btn-lg btn-block">Modification</button>
+    <form action="admin.php" method="POST">
+    <button type="submit" class="btn btn-primary btn-lg btn-block" name="modif">Modification</button>
+  
     <!-- SELECT login FROM user -->
-    <button type="button" class="btn btn-secondary btn-lg btn-block">Suppression</button>
+    <!-- SELECT * FROM user where le user selectionné et tu l'affiches dans le formulaire-->
+    <button type="submit" class="btn btn-secondary btn-lg btn-block" name="delete">Suppression</button>
+    <?php 
+        $pdo = new user($conn);
+        echo $_SESSION['username'];
+        if(isset($_POST['modif'])){
+            $selecUser = $pdo->selecUsers();
+            echo $selecUser[0];            
+        }else{
+            echo "Aucune manipulation effectuee";
+        }
+        $retour  = $pdo->modificationUser($_SESSION['username'],$_SESSION['password'],$usermodif,$passwordmodif);
+       
+        //$retour2 = $pdo->deleteUser($id_user);
+    ?>
     <!-- SELECT login FROM user -->
-    <!-- delete user selectionné -->
+    <!-- DELETE FROM `user` where -> user selectionné-->
+    </form>
 </div>
 <?php
 /*

@@ -17,9 +17,13 @@ $pdo = new user($conn);
     $password = $_POST['password'];
 
     $autorisation = $pdo->Autorisation($username,$password);
+        if($autorisation == 1){
+            $_SESSION['username'] = $username;
+            $_SESSION['password'] = $password;
+        }
     }else{
-   header('Location: login.php');
+    session_destroy();
 }
 
-session_destroy(); // fermer la connexion
+ // fermer la connexion
 ?>

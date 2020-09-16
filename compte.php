@@ -1,10 +1,19 @@
 <!-- acces a mon compte utilisateur -->
-<main>
+<!DOCTYPE HTML>
+<html lang="fr">
+<head>
   <link rel="stylesheet" href="styleMenu.css">
-  <h1>
-    Bienvenue
-    <span></span>
-  </h1>
+</head>
+<body>
+<!-- Ajouter le profile utilisateur pour pouvoir modifier son mot de passe -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="card">
+  <h1></h1>
+  <p class="title"></p>
+  <p></p>
+</div>
+
   <input type="checkbox" id="myInput">
   <label for="myInput">
     <span class="bar top"></span>
@@ -28,4 +37,8 @@
       </ul>
     </div>
   </aside>
-</main>
+</body>
+</html>
+
+<!-- SELECT * FROM `user` -->
+<!-- afficher les infos du compte -->

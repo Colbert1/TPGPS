@@ -19,7 +19,7 @@ $pdo = new user($conn);
     $nom        = $_POST['nom'];
     $mail       = $_POST['mail'];
 
-    $inscription = $pdo->Inscription_user($username,$password,$prenom,$nom,$mail);
+    $inscription = $pdo->inscriptionUser($username,$password,$prenom,$nom,$mail);
     echo $inscription;
 }else{
    header('Location: login.php');
