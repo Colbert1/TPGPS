@@ -19,20 +19,27 @@ Cette page ne sera accessible que si l’utilisateur est un administrateur authe
 </nav>
 <div class="container">
     <form action="admin.php" method="POST">
+    <!--Boutons-->
     <button type="submit" class="btn btn-primary btn-lg btn-block" name="modif">Modification</button>
-  
-    <!-- SELECT * FROM user where le user selectionné et tu l'affiches dans le formulaire-->
     <button type="submit" class="btn btn-secondary btn-lg btn-block" name="delete">Suppression</button>
     <?php 
         $pdo = new user($conn);
-
+        //Modifications
         if(isset($_POST['modif'])){
             $compteurUser = $pdo->compteurUsers();  
             $selecUser = $pdo->selecUsers();
-           /* for($i = 0; $i < $compteurUser; $i++){
-                echo $selecUser[$i];
-            }*/
-                        
+            ?>
+        <!--Liste déroulante des utilisateurs-->
+        <select nom="userChoice" size="1">
+            <h2>Liste des utilisateurs</h2>
+            <?php
+            for($i = 0; $i < $compteurUser[0]; $i++){
+                echo "<option>$selecUser[$i]";
+            }
+            ?>
+        </select>
+        <button type="submit" class="btn btn-secondary btn-lg btn-block" name="modifSuite">Continuer Modifications</button>
+        <?              
         }else{
             echo "Aucune manipulation effectuee";
         }
