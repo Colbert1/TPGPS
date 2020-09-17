@@ -25,13 +25,13 @@ Cette page ne sera accessible que si l’utilisateur est un administrateur authe
     <button type="submit" class="btn btn-secondary btn-lg btn-block" name="delete">Suppression</button>
     <?php 
         $pdo = new user($conn);
-        
+
         if(isset($_POST['modif'])){
             $compteurUser = $pdo->compteurUsers();  
             $selecUser = $pdo->selecUsers();
-            for($i = 0; $i < $compteurUser; $i++){
+           /* for($i = 0; $i < $compteurUser; $i++){
                 echo $selecUser[$i];
-            }
+            }*/
                         
         }else{
             echo "Aucune manipulation effectuee";
