@@ -26,4 +26,3 @@ $pdo = new user($conn);
 }
 
  // fermer la connexion
-?>

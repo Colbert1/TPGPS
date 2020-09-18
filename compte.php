@@ -1,22 +1,26 @@
 <!-- acces a mon compte utilisateur -->
 <!DOCTYPE HTML>
 <html lang="fr">
+
 <head>
   <link rel="stylesheet" href="styleMenu.css">
   <?php include("classUser.php"); ?>
+  <?php include("classGPS.php"); ?>
 </head>
-<body>
-<!-- Ajouter le profile utilisateur pour pouvoir modifier son mot de passe -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="card">
-  <h1>Profile :</h1>
-  <p><?php echo $username ?></p>
-  <p><?php echo $name ?></p>
-  <p><?php echo $surname ?></p>
-  <p><?php echo $mail ?></p>
-  <p><?php echo $password ?></p>
-</div>
+<body>
+  <!-- Ajouter le profile utilisateur pour pouvoir modifier son mot de passe -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <div class="card">
+    <h1>Profile :</h1>
+    <!-- fonction afficheUser prete-->
+    <p><?php echo $username ?></p>
+    <p><?php echo $name ?></p>
+    <p><?php echo $surname ?></p>
+    <p><?php echo $mail ?></p>
+    <p><?php echo $password ?></p>
+  </div>
 
   <input type="checkbox" id="myInput">
   <label for="myInput">
@@ -42,6 +46,7 @@
     </div>
   </aside>
 </body>
+
 </html>
 
 <!-- SELECT * FROM `user` -->

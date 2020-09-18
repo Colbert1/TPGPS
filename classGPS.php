@@ -1,6 +1,14 @@
 <?php
+include("bdd.php");
 class GPS
 {
+    private $_bdd;
+
+    public function __construct($bdd)
+    {
+        $this->_bdd = $bdd;
+    }
+
     public function recupGPS()
     {
         //recupere latitude et longitude
@@ -17,7 +25,7 @@ class GPS
     public function afficheVitesse()
     {
         //affiche vitesse et vitesse moyenne
-        /*$reponse = $bdd->query('SELECT `nom_bateau`, `date`, `heure`, `latitude`, `longitude`, `vitesse`, `vitesse_moyenne` FROM `bateau`,`coordonnees` WHERE 2');
+        $reponse = $this->_bdd->query('SELECT `nom_bateau`, `date`, `heure`, `latitude`, `longitude`, `vitesse`, `vitesse_moyenne` FROM `bateau`,`coordonnees`');
         while ($donnees = $reponse->fetch()) {
 
             echo 'Nom du bateau : ' . $donnees['nom_bateau'] . '<p>';
@@ -27,6 +35,6 @@ class GPS
             echo 'Longitude : ' . $donnees['longitude'] . '<p>';
             echo 'Vitesse : ' . $donnees['vitesse'] . '<p>';
             echo 'Vitesse Moyenne : ' . $donnees['vitesse_moyenne'] . '<p>';
-        }*/
+        }
     }
 }

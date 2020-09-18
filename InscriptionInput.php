@@ -21,8 +21,9 @@ $pdo = new user($conn);
 
     $inscription = $pdo->inscriptionUser($username,$password,$prenom,$nom,$mail);
     echo $inscription;
+    ?><a href="index.php">Retourner a l'accueil</a><?php
 }else{
-   header('Location: login.php');
+   
 }
 
 session_destroy(); // fermer la connexion

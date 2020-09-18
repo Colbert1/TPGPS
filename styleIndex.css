@@ -6,7 +6,7 @@ body{
     margin:0 auto;
     margin-top:10%;
 }
-/* Bordered form */
+/* Formulaire */
 form {
     width:100%;
     padding: 30px;
@@ -19,7 +19,7 @@ form {
     padding-bottom: 10px;
 }
 
-/* Full-width inputs */
+/* Larger Text inputs */
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -29,7 +29,7 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
+/* Connexion bouton */
 input[type=submit] {
     background-color: #4b6fbe;
     color: white;
@@ -40,6 +40,22 @@ input[type=submit] {
     width: 100%;
 }
 input[type=submit]:hover {
+    background-color: white;
+    color: #4b6fbe;
+    border: 1px solid #4b6fbe;
+}
+
+/* Inscription bouton */
+button{
+    background-color: #4b6fbe;
+    color:white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+button:hover {
     background-color: white;
     color: #4b6fbe;
     border: 1px solid #4b6fbe;

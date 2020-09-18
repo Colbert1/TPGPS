@@ -29,7 +29,7 @@
             <input type="text" placeholder="Entrer le nom" name="nom" required>
             <p>Mail :</p>
             <input type="text" placeholder="Entrer le mail" name="mail" required>
-            <input type="submit" id="submit" value='LOGIN'>
+            <input type="submit" id="submit" value='INSCRIPTION'>
         </form>
     </div>
     <!--Footer-->

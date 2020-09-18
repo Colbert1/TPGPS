@@ -51,7 +51,7 @@ class user
                 $sql = $this->_bdd->prepare("SELECT COUNT(*) `login` FROM `user`");
                 $sql->execute();
                 $compteur = $sql->fetch();
-                
+
                 return $compteur;
         }
         //Sélection de tous les utilisateurs
@@ -72,7 +72,7 @@ class user
                 $this->_userComparaison = $username;
                 $this->_passwordComparaison = $password;
 
-                $sql = $this->_bdd->prepare("UPDATE `user` SET `login` = '$userModif AND `password` = '$passwordModif' WHERE `user`.`login` = '$username' AND `user`.`password` = '$password'");
+                $sql = $this->_bdd->prepare("UPDATE `user` SET `login` = '$userModif' AND `password` = '$passwordModif' WHERE `user`.`login` = '$username' AND `user`.`password` = '$password'");
                 $sql->execute();
                 //A continuer : lecture bdd puis comparaison des données
 
@@ -86,7 +86,6 @@ class user
 
         public function deleteUser($id_user)
         {
-
         }
         //Fonction pour inscription à terminer
         public function inscriptionUser($username, $password, $surname, $name, $mail)
@@ -95,5 +94,16 @@ class user
                 $sql->execute();
                 $reponse = $sql->fetch();
                 echo $reponse;
+        }
+        public function afficheUser($username, $password, $surname, $name, $mail, $admin,$id)
+        {
+                $sql = $this->_bdd->prepare("SELECT `nom`='$name',`prenom`='$surname',`mail`='$mail',`login`='$username',`password`='$password',`admin`='$admin' FROM `user` WHERE id_user = '$id'");
+                $sql->execute();
+                $reponse = $sql->fetch();
+                echo $reponse;
+                //pour plus tard afficher les bateaux
+                /*<php $aff = new GPS($conn);
+                $affVitesse = $aff->afficheVitesse();
+                echo $affVitesse; ?*/
         }
 }
