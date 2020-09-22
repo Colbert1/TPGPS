@@ -4,22 +4,23 @@
 
 <head>
   <link rel="stylesheet" href="styleMenu.css">
-  <?php include("classUser.php"); ?>
-  <?php include("classGPS.php"); ?>
+  <?php 
+    session_start();
+    include("bdd.php");
+    include("classUser.php");
+    include("classGPS.php"); ?>
 </head>
 
 <body>
   <!-- Ajouter le profile utilisateur pour pouvoir modifier son mot de passe -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <div class="card">
     <h1>Profile :</h1>
     <!-- fonction afficheUser prete-->
-    <p><?php echo $username ?></p>
-    <p><?php echo $name ?></p>
-    <p><?php echo $surname ?></p>
-    <p><?php echo $mail ?></p>
-    <p><?php echo $password ?></p>
+    <?php 
+      $afficheU = afficheUser($username, $password, $surname, $name, $mail, $admin,$id);
+      echo $afficheU;
+    ?>
   </div>
 
   <input type="checkbox" id="myInput">
@@ -37,12 +38,14 @@
     </div>
     <!-- Menu -->
     <div class="aside-section aside-right">
-      <ul class="aside-list">
+
+      <form action="disconnect.php" class="aside-list" method="POST">
         <li><a href="compte.php" class="aside-anchor">Acces a mon compte</a></li>
         <li><a href="trace.php" class="aside-anchor">Position des bateaux</a></li>
         <li><a href="admin.php" class="aside-anchor">Acces administrateur</a></li>
-        <li><a href="index.php" class="aside-anchor">Deconnexion</a></li>
-      </ul>
+        <li><button type="submit" class="btn btn-secondary btn-lg btn-block" name="disconnect">Deconnexion</button>
+          <a href="index.php" class="aside-anchor">Deconnexion</a></li>
+      </form>
     </div>
   </aside>
 </body>

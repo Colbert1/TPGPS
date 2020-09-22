@@ -1,34 +1,4 @@
 
-body{
-    background:#FFFFF0;
-}
-
-form{
-    width:100%;
-    padding:30%;
-    border:1px solid #F1F1F1;
-    background:#009933;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
-
-p{
-    text-decoration:underline;
-    letter-spacing:1.5px;
-    line-height:10px;
-}
-
-/* Classes */
-#container{
-    width:32%;
-    margin:0 auto;
-    margin-top:10%;
-}
-
-#container h1{
-    margin: 0 auto;
-    padding-bottom: 10%;
-}
-
 /* Input username + Input password */
 input[type=text], input[type=password] {
     width: 100%;
@@ -41,7 +11,6 @@ input[type=text], input[type=password] {
 
 /* Bouton */
 input[type=submit] {
-    background-color: #53af57;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -112,6 +81,7 @@ main {
   margin-top: 150px;
   text-align: left;
   padding-left: 50px;
+  background-color: #38618c;
 }
 
 .aside-content {

@@ -24,6 +24,7 @@ Cette page ne sera accessible que si l’utilisateur est un administrateur authe
         <!--Boutons-->
             <button type="submit" class="btn btn-primary btn-lg btn-block" name="modif">Modification</button>
             <button type="submit" class="btn btn-secondary btn-lg btn-block" name="delete">Suppression</button>
+            <button type="submit" class="btn btn-secondary btn-lg btn-block" name="disconnect">Deconnexion</button>
         <?php 
             $pdo = new user($conn);
             //Modifications
@@ -43,11 +44,13 @@ Cette page ne sera accessible que si l’utilisateur est un administrateur authe
             <form action="modifDelete.php" method="POST">
                 <button type="submit" class="btn btn-secondary btn-lg btn-block" name="modifSuite">Continuer Modifications</button>
             </form>
-        <?              
+        <?php              
+            }elseif(isset($_POST['disconnect'])){
+                session_destroy();
             }else{
                 echo "Aucune manipulation effectuee";
             }
-            $retour  = $pdo->modificationUser($_SESSION['username'],$_SESSION['password'],$usermodif,$passwordmodif);
+            $retour = $pdo->modificationUser($_SESSION['username'],$_SESSION['password'],$usermodif,$passwordmodif);
         
 
             //$retour2 = $pdo->deleteUser($id_user);
