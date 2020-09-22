@@ -1,19 +1,17 @@
-<!--
-Permettre via un menu de pouvoir modifier ou supprimer un compte existant de la BDD.
-Il faudra d’abord afficher la liste des comptes existants puis en sélectionner
-un pour modification ou suppression.
-Cette page ne sera accessible que si l’utilisateur est un administrateur authentifié.
--->
 <?php 
-    include("bdd.php");
     include("classUser.php");
-?>
+    include("classGPS.php"); ?>
 <!DOCTYPE HTML>
-<html>
-    <head>
-        <link rel="stylesheet" href="styleAdmin.css">    
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    </head>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="TPGPS" value="notranslate">
+    <!--A revenir dessus-->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="styleAdmin.css"> 
+    <title>Admin</title>
+</head>
     <body>
         <nav class="navbar navbar-light bg-light">
             <span class="navbar-brand mb-0 h1">
@@ -24,7 +22,7 @@ Cette page ne sera accessible que si l’utilisateur est un administrateur authe
         <!--Boutons-->
             <button type="submit" class="btn btn-primary btn-lg btn-block" name="modif">Modification</button>
             <button type="submit" class="btn btn-secondary btn-lg btn-block" name="delete">Suppression</button>
-            <button type="submit" class="btn btn-secondary btn-lg btn-block" name="disconnect">Deconnexion</button>
+            <button type="submit" class="btn btn-secondary btn-lg btn-block" name="disconnect"><a href="index.php">Deconnexion</a></button>
         <?php 
             $pdo = new user($conn);
             //Modifications

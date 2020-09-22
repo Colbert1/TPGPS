@@ -1,14 +1,19 @@
 <!-- acces a mon compte utilisateur -->
+<?php
+include("classUser.php");
+include("classGPS.php"); ?>
 <!DOCTYPE HTML>
 <html lang="fr">
 
 <head>
+  <meta charset="utf-8">
+  <meta name="TPGPS" value="notranslate">
+  <!--A revenir dessus-->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
   <link rel="stylesheet" href="styleMenu.css">
-  <?php 
-    session_start();
-    include("bdd.php");
-    include("classUser.php");
-    include("classGPS.php"); ?>
+
 </head>
 
 <body>
@@ -17,9 +22,10 @@
   <div class="card">
     <h1>Profile :</h1>
     <!-- fonction afficheUser prete-->
-    <?php 
-      $afficheU = afficheUser($username, $password, $surname, $name, $mail, $admin,$id);
-      echo $afficheU;
+    <?php
+    echo $_SESSION['username'];
+    $afficheUser = $pdo->afficheUser($username, $password, $surname, $name, $mail, $admin, $id);
+    echo $afficheUser;
     ?>
   </div>
 

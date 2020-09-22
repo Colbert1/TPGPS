@@ -1,7 +1,5 @@
 <?php
-session_start();
-include("bdd.php");
-include("classUser.php");
+include("header.php");
 
 if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['prenom']) && isset($_POST['nom']) && isset($_POST['mail']))
 {

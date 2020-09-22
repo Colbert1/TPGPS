@@ -1,6 +1,5 @@
 <?php
 
-
 class user
 {
         //Variables
@@ -21,10 +20,11 @@ class user
         {
 
                 if ($username !== "" && $password !== "") {
-                        $sql = $this->_bdd->prepare("SELECT count(*) FROM `user` WHERE `user`.`login` = '$username' AND `user`.`password` = '$password' ");
+                        $sql = $this->_bdd->prepare("SELECT COUNT(*) FROM `user` WHERE `user`.`login` = '$username' AND `user`.`password` = '$password'");
                         $sql->execute();
                         $reponse = $sql->fetch();
                         $count = $reponse[0];
+                        echo $count;
 
                         if ($count != 0) { // nom d'utilisateur et mot de passe correctes
                                 $sql2 = $this->_bdd->prepare("SELECT `admin` FROM `user` WHERE `user`.`login` = '$username' AND `user`.`password` = '$password'");
@@ -36,7 +36,7 @@ class user
                                         echo "<a href='compte.php'>Connexion reussi, continuer en tant qu'utilisateur</a>";
                                 }
                                 return TRUE;
-                        } else {
+                        } else {        
                                 echo "<a href='index.php'>User et mdp incorrects, continuer</a>"; // nom d'utilisateur et mot de passe incorrectes
                                 return FALSE;
                         }
