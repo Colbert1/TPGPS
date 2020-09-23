@@ -24,7 +24,6 @@ class user
                         $sql->execute();
                         $reponse = $sql->fetch();
                         $count = $reponse[0];
-                        echo $count;
 
                         if ($count != 0) { // nom d'utilisateur et mot de passe correctes
                                 $sql2 = $this->_bdd->prepare("SELECT `admin` FROM `user` WHERE `user`.`login` = '$username' AND `user`.`password` = '$password'");
@@ -36,7 +35,7 @@ class user
                                         echo "<a href='compte.php'>Connexion reussi, continuer en tant qu'utilisateur</a>";
                                 }
                                 return TRUE;
-                        } else {        
+                        } else {
                                 echo "<a href='index.php'>User et mdp incorrects, continuer</a>"; // nom d'utilisateur et mot de passe incorrectes
                                 return FALSE;
                         }
@@ -67,12 +66,11 @@ class user
         }
 
         //Fonction modification
-        public function modificationUser($username, $password, $userModif, $passwordModif)
+        public function modificationUser($username, $mailmodif, $userModif, $passwordModif)
         {
                 $this->_userComparaison = $username;
-                $this->_passwordComparaison = $password;
 
-                $sql = $this->_bdd->prepare("UPDATE `user` SET `login` = '$userModif' AND `password` = '$passwordModif' WHERE `user`.`login` = '$username' AND `user`.`password` = '$password'");
+                $sql = $this->_bdd->prepare("UPDATE `user` SET `mail` = '$mailmodif', `login` = '$userModif', `password` = '$passwordModif' WHERE `user`.`login` = '$username'");
                 $sql->execute();
                 //A continuer : lecture bdd puis comparaison des données
 
@@ -95,12 +93,12 @@ class user
                 $reponse = $sql->fetch();
                 echo $reponse;
         }
-        public function afficheUser($username, $password, $surname, $name, $mail, $admin,$id)
-        {
-                $sql = $this->_bdd->prepare("SELECT `nom`='$name',`prenom`='$surname',`mail`='$mail',`login`='$username',`password`='$password',`admin`='$admin' FROM `user` WHERE id_user = '$id'");
+        public function afficheUser($username)
+        {       
+                $sql = $this->_bdd->prepare("SELECT `user`.`nom`, `user`.`prenom`, `user`.`mail`, `user`.`login`, `user`.`password`, `user`.`admin` FROM `user` WHERE `user`.`login` = '$username'");
                 $sql->execute();
                 $reponse = $sql->fetch();
-                echo $reponse;
+                echo $reponse['nom'];
                 //pour plus tard afficher les bateaux
                 /*<php $aff = new GPS($conn);
                 $affVitesse = $aff->afficheVitesse();

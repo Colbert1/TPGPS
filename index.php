@@ -1,6 +1,26 @@
 <?php
 include("classUser.php");
-include("bdd.php"); ?>
+include("bdd.php");
+session_start();
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    // connexion à la base de données
+    $db_username = 'root';
+    $db_password = 'root';
+    $db_name     = 'projet_GPS';
+    $db_host     = '192.168.64.204';
+
+    $pdo = new user($conn);
+
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $autorisation = $pdo->autorisation($username, $password);
+    if ($autorisation == 1) {
+        $_SESSION['username'] = $username;
+        $_SESSION['password'] = $password;
+    }
+}
+
+?>
 <!DOCTYPE HTML>
 <html lang="fr">
 
@@ -22,43 +42,20 @@ include("bdd.php"); ?>
         <!--Formulaire de connexion-->
         <form action="index.php" method="POST">
             <h1>Identification</h1>
-
             <p>Nom d'utilisateur :</p>
             <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
             <p>Mot de passe :</p>
             <input type="text" placeholder="Entrer le mot de passe" name="password" required>
             <input type="submit" id="submit" value='LOGIN'>
             <button onclick="window.location.href = 'Inscription.php';">INSCRIPTION</button>
-
         </form>
-
     </div>
     <!--Footer-->
-    <div>
-    </div>
 </body>
 
 </html>
-
 <?php
 
-if (isset($_POST['username']) && isset($_POST['password'])) {
-    // connexion à la base de données
-    $db_username = 'root';
-    $db_password = 'root';
-    $db_name     = 'projet_GPS';
-    $db_host     = '192.168.64.204';
 
-    $pdo = new user($conn);
-
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $autorisation = $pdo->autorisation($username, $password);
-    if ($autorisation == 1) {
-        $_SESSION['username'] = $username;
-        $_SESSION['password'] = $password;
-    }
-}
 
  // fermer la connexion
